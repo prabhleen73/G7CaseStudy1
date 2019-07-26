@@ -4,3 +4,9 @@ c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAn
 c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.csprojResolveAssemblyReference.cache
 c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.exe
 c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.exe.config
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.exe
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.exe
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.csprojResolveAssemblyReference.cache
