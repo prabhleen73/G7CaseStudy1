@@ -15,7 +15,7 @@ namespace StaticAnalyzer
             string xmllocation=" ";
             ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
             exeFileAndLocation = @"C:\Program Files (x86)\SemanticDesigns\DMS\Executables\DMSSoftwareMetrics.cmd";
-            arguments = @"CSharp~v6 C:\Users\320050767\documents\check ";
+            arguments = @"CSharp~v6 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\check ";
             ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
         }
 
