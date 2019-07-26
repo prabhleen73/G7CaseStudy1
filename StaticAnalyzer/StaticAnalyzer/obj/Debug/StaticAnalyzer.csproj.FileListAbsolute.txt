@@ -1,0 +1,6 @@
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.exe.config
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.exe
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\bin\Debug\StaticAnalyzer.pdb
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.csprojResolveAssemblyReference.cache
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.exe
+c:\users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer\obj\Debug\StaticAnalyzer.pdb
