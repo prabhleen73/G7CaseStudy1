@@ -18,6 +18,10 @@ namespace StaticAnalyzer
             //arguments = "CSharp~v6";
 
             //ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
+            string xmllocation=" ";
+            ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+
+
         }
 
         public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
