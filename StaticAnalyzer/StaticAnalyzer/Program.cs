@@ -8,15 +8,25 @@ namespace StaticAnalyzer
         {
             string exeFileAndLocation;
             string arguments;
+            string xmllocation = " ";
 
             exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
             arguments = @"C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer.ndproj  /LogTrendMetrics /OutDir C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalysisReports";
             ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
-            string xmllocation=" ";
-            ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+
+            //ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+
             exeFileAndLocation = @"C:\Program Files (x86)\SemanticDesigns\DMS\Executables\DMSSoftwareMetrics.cmd";
             arguments = @"CSharp~v6 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\check ";
             ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
+
+            xmllocation = "";
+            //ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+
+            exeFileAndLocation = @"C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe";
+            arguments = @"/p:C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\HelloWorld.FxCop /out:C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisReports\FxCopResults.xml";
+            ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
+
         }
 
         public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
