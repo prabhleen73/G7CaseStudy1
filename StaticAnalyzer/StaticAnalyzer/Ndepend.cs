@@ -8,7 +8,7 @@ namespace StaticAnalyzer
 {
     class Ndepend : StaticAnalysisTool
     {
-        public void prepareInput()
+        public void prepareInput(string[] filename)
         {
             throw new NotImplementedException();
         }
@@ -18,6 +18,6 @@ namespace StaticAnalyzer
             throw new NotImplementedException();
         }
 
-        vo
+        
     }
 }

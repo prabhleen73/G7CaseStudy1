@@ -8,7 +8,7 @@ namespace StaticAnalyzer
 {
     interface StaticAnalysisTool
     {
-        void prepareInput();
+        void prepareInput(string[] filename);
         void processOutput();
 
     }
