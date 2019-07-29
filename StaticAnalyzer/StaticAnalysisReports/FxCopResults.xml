@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml-stylesheet type="text/xsl" href="c:\program files (x86)\microsoft fxcop 10.0\Xml\FxCopReport.xsl"?>
+<FxCopReport Version="10.0">
+ <Localized>
+  <String Key="Category">Category</String>
+  <String Key="Certainty">Certainty</String>
+  <String Key="CollapseAll">Collapse All</String>
+  <String Key="CheckId">Check Id</String>
+  <String Key="Error">Error</String>
+  <String Key="Errors">error(s)</String>
+  <String Key="ExpandAll">Expand All</String>
+  <String Key="Help">Help</String>
+  <String Key="Line">Line</String>
+  <String Key="Messages">message(s)</String>
+  <String Key="LocationNotStoredInPdb">[Location not stored in Pdb]</String>
+  <String Key="Project">Project</String>
+  <String Key="Resolution">Resolution</String>
+  <String Key="Rule">Rule</String>
+  <String Key="RuleFile">Rule File</String>
+  <String Key="RuleDescription">Rule Description</String>
+  <String Key="Source">Source</String>
+  <String Key="Status">Status</String>
+  <String Key="Target">Target</String>
+  <String Key="Warning">Warning</String>
+  <String Key="Warnings">warning(s)</String>
+  <String Key="ReportTitle">Code Analysis Report</String>
+ </Localized>
+ <Exceptions>
+  <Exception Keyword="CA0001" Kind="ProjectLoad">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>Failed to add target : C:\Users\320050767\Source\Repos\Source\Repos\G7CaseStudy13\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.</ExceptionMessage>
+   <InnerType>Microsoft.FxCop.Sdk.FxCopException</InnerType>
+   <InnerExceptionMessage>Could not locate C:\Users\320050767\Source\Repos\Source\Repos\G7CaseStudy13\HelloWorld\HelloWorld\bin\Debug\HelloWorld.exe.</InnerExceptionMessage>
+   <InnerStackTrace>   at Microsoft.FxCop.Common.TargetFile.Initialize()
+   at Microsoft.FxCop.Common.TargetFile..ctor(XmlNode xml, NodeBaseDictionary container)
+   at Microsoft.FxCop.Common.TargetFileDictionary.Load(XmlNode xml)</InnerStackTrace>
+  </Exception>
+  <Exception Keyword="CA0057" Kind="ProjectLoad">
+   <Type>Microsoft.FxCop.Common.MissingMessagesException</Type>
+   <ExceptionMessage>Could not import all messages.</ExceptionMessage>
+  </Exception>
+  <Exception Keyword="CA0052" Kind="Engine">
+   <Type>Microsoft.FxCop.Sdk.FxCopException</Type>
+   <ExceptionMessage>No targets were selected.</ExceptionMessage>
+  </Exception>
+ </Exceptions>
+</FxCopReport>
