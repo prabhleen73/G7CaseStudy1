@@ -8,9 +8,9 @@ namespace StaticAnalyzer
 {
     class CSharpMetrics : StaticAnalysisTool
     {
-        public void prepareInput()
+        public void prepareInput(string[] filename)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void processOutput()

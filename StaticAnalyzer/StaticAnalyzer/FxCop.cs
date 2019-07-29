@@ -8,7 +8,7 @@ namespace StaticAnalyzer
 {
     class FxCop : StaticAnalysisTool
     {
-        public void prepareInput()
+        public void prepareInput(string[] filename)
         {
             throw new NotImplementedException();
         }
