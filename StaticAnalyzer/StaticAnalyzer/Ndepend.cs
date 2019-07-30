@@ -8,7 +8,7 @@ namespace StaticAnalyzer
 {
     class Ndepend : StaticAnalysisTool
     {
-         public void prepareInput(string[] filename)
+        public bool prepareInput(string[] filename)
         {
             int i = 0;
             while (filename[i])
