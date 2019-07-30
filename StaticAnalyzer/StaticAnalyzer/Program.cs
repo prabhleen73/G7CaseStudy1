@@ -27,6 +27,11 @@ namespace StaticAnalyzer
 
             FxCop fxcop = new FxCop();
             toolInputProcessing = fxcop.prepareInput(exePath);
+            
+            
+            Ndepend ndependout=new Ndepend();
+            string outpath=ndependout.prepareInput(filename);
+            ndependout.processOutput();
             //csharpmetric.processOutput();
 
             //exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
