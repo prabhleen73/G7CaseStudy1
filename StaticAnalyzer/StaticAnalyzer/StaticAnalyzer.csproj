@@ -43,16 +43,22 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CSharpMetrics.cs" />
-    <Compile Include="FxCop.cs" />
-    <Compile Include="Ndepend.cs" />
-    <Compile Include="ParsingXmlNDepend.cs" />
+    <Compile Include="Configuration\Configuration.cs" />
+    <Compile Include="Configuration\ToolsConfiguration.cs" />
+    <Compile Include="PluginWrappers\CSharpMetric\CSharpMetrics.cs" />
+    <Compile Include="PluginWrappers\FxCop\FxCop.cs" />
+    <Compile Include="PluginWrappers\NDeped\Ndepend.cs" />
+    <Compile Include="PluginWrappers\FxCop\ParsingFxCop.cs" />
+    <Compile Include="PluginWrappers\NDeped\ParsingXmlNDepend.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="StaticAnalysisTool.cs" />
+    <Compile Include="IStaticAnalysisTool.cs" />
+    <Compile Include="Configuration\ToolMeta.cs" />
+    <Compile Include="StaticAnalysis.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+    <None Include="ClassDiagram1.cd" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

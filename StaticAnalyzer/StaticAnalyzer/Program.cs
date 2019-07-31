@@ -1,5 +1,9 @@
-﻿using System.Diagnostics;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
+using System.Linq;
 using System.Reflection;
 using System.Xml.Linq;
 
@@ -7,52 +11,61 @@ namespace StaticAnalyzer
 {
     class Program
     {
-        static void Main(string[] args)
+        static string ConfigurationFilePath = "C:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\StaticAnalyzer\\Configuration.xml";
+        static int Main(string[] args)
         {
-            bool toolInputProcessing;
-
-            string[] filename = { "C:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\HelloWorld\\HelloWorld\\Program.cs"};
-            string[] solutionPath = { "C:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\HelloWorld\\HelloWorld.sln" };
-            string[] exePath = { "C:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\HelloWorld\\HelloWorld\\bin\\Debug\\HelloWorld.exe" };
-
-            CSharpMetrics csharpmetric = new CSharpMetrics();
-            toolInputProcessing = true/*csharpmetric.prepareInput(filename)*/;
-            if (toolInputProcessing)
+            string inputPath = "";
+            if (args.Length != 1)
             {
-                //string executableDirectory = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                //string arguments = "CSharp~v6" + executableDirectory + "..\\..\\..\\CSharpMetricInput";
-                //ExecuteStaticAnalysisTool(csharpmetric.exePath, arguments);
-                csharpmetric.processOutput();
-                csharpmetric.displayOutput();
+                Console.WriteLine("Input Path not provided");
+                return -1;
             }
+            inputPath = args[0];
 
-            FxCop fxcop = new FxCop();
-            toolInputProcessing = fxcop.prepareInput(exePath);
-            //csharpmetric.processOutput();
+            Console.WriteLine("Welcome to Static Analysis Tool");
+            var configuration = LoadConfiguration(ConfigurationFilePath);
+            var toolsConfiguration = new ToolsConfiguration(configuration["installedPlugins"]);
+            StaticAnalysisApplication staticAnalysis = new StaticAnalysisApplication(toolsConfiguration.Tools);
+            staticAnalysis.Run(inputPath);         
+            return 0;
+        }
 
-            //exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
-            //arguments = @"C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer.ndproj  /LogTrendMetrics /OutDir C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalysisReports";
+
+        //COnfirguration
+
+        private static IReadOnlyDictionary<string, XElement> LoadConfiguration(string ConfigurationFilePath)
+        {
+            Configuration config = new Configuration(ConfigurationFilePath);
+            config.LoadConfiguration();
+            return config.Configurations;
+        }
+
+        public static void PerformMetrics()
+        {
+            // bool toolInputProcessing = true;
+
+
+
+
+
+
+            //string exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
+            //string arguments = @"C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer.ndproj  /LogTrendMetrics /OutDir C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalysisReports";
             //ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
 
-            ////ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+            //ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+            //ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
 
-            
-
-            //xmllocation = "";
-            ////ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+            //FxCop fxcop = new FxCop();
+            //toolInputProcessing = fxcop.prepareInput(exePath);
 
             //exeFileAndLocation = @"C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe";
             //arguments = @"/p:C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\HelloWorld.FxCop /out:C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisReports\FxCopResults.xml";
             //ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
 
+            //csharpmetric.processOutput();
+
         }
 
-        public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
-        {
-            using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
-            {
-                ExeToExecute.WaitForExit();
-            }
-        }
     }
 }

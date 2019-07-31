@@ -14,8 +14,8 @@ namespace StaticAnalyzer
 
         public Parser(string fileName)
         {
-            XDocument doc = XDocument.Load(fileName);
-            var issues = GetAllIssues(doc);
+            XElement root = XElement.Load(fileName);
+            var issues = GetAllIssues(root);
             NumberOfIssues = issues.Count;
             Console.WriteLine(NumberOfIssues + "\n");
 
@@ -35,37 +35,17 @@ namespace StaticAnalyzer
             Console.WriteLine("NumberOfWarnings " + NumberOfWarnings + "\n");
         }
 
-        public int NumberOfIssues
-        {
-            get;
-            private set;
-        }
+        public int NumberOfIssues { get; private set; }
 
-        public int NumberOfCriticalErrors
-        {
-            get;
-            private set;
-        }
+        public int NumberOfCriticalErrors { get; private set; }
 
-        public int NumberOfErrors
-        {
-            get;
-            private set;
-        }
+        public int NumberOfErrors { get; private set; }
 
-        public int NumberOfCriticalWarnings
-        {
-            get;
-            private set;
-        }
+        public int NumberOfCriticalWarnings { get; private set; }
 
-        public int NumberOfWarnings
-        {
-            get;
-            private set;
-        }
+        public int NumberOfWarnings { get; private set; }
 
-        private List<XElement> GetAllIssues(XDocument doc)
+        private List<XElement> GetAllIssues(XElement doc)
         {
             IEnumerable<XElement> issues =
                 from el in doc.Descendants("Issue")
