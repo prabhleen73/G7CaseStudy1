@@ -1,12 +1,16 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Diagnostics;
 using System.Xml.Linq;
 
 namespace StaticAnalyzer
 {
     class FxCop : StaticAnalysisTool
     {
+
         public bool prepareInput(string[] filename)
         {
             bool success = true;
@@ -30,7 +34,8 @@ namespace StaticAnalyzer
 
         public void processOutput()
         {
-            throw new NotImplementedException();
+            string fileName = @"C:\Users\320066545\source\repos\G7CaseStudy1\StaticAnalyzer\StaticAnalysisReports\FxCopResults.xml";
+            Parser obj = new Parser(fileName);
         }
     }
 }
