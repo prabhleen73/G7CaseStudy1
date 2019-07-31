@@ -15,17 +15,29 @@ namespace StaticAnalyzer
         {
             //string ques = Console.ReadLine();
 
-            XmlTextReader reader = new XmlTextReader(argument);
+             XmlTextReader reader = new XmlTextReader(argument);
             int flag = 0;
+            Dictionary<string, string> NDependMetrics = new Dictionary<string, string>();
+            List<string> attributeName = new List<string>();
+            string[] attributeValue = null;
             while (reader.Read()&&flag==0)
             {
                 
                 switch (reader.NodeType)
                 {
-                    
-
                     case XmlNodeType.Element: // The node is an element.
                         //Console.Write("<" + reader.Name);
+                        if(reader.Name=="Metric")
+                        {
+                            while(reader.MoveToNextAttribute())
+                            {
+                                if(reader.Name=="Name")
+                                {
+                                    attributeName.Add(reader.Value);
+                                }
+                            }
+                        }
+
                         if (reader.Name == "R"&&flag==0)
                         {
                             int i = 0;
@@ -36,45 +48,8 @@ namespace StaticAnalyzer
                                     //Console.Write("Debt is " + reader.Name + "='" + reader.Value + "");
                                     string ans = reader.Value;
                                     // Console.WriteLine(ans);
-                                    int x = 0;
-
-                                    for (int j = 0; j < ans.Length; j++)
-                                    {
-                                        if (x == 11)
-                                        {
-                                            Console.Write("Total Rules:= ");
-                                            while (x == 11 && ans[j] != '|')
-                                            {
-                                                Console.Write(ans[j++]);
-                                            }
-                                            Console.WriteLine("");
-                                        }
-                                        if (x == 12)
-                                        {
-                                            Console.Write("Rules Violated:= ");
-                                            while (x == 12 && ans[j] != '|')
-                                            {
-                                                Console.Write(ans[j++]);
-                                            }
-                                            Console.WriteLine("");
-                                        }
-
-                                        if (x == 24)
-                                        {
-                                            Console.Write("Lines Of code:= ");
-                                            while (x == 24 && ans[j] != '|')
-                                            {
-                                                Console.Write(ans[j++]);
-                                            }
-                                            Console.WriteLine("");
-                                        }
-
-
-                                        if (ans[j] == '|')
-                                            x++;
-
-                                    }
-
+                                    // int x = 0;
+                                    attributeValue = ans.Split('|');                
                                 }
                                 i++;
                             }
@@ -83,15 +58,22 @@ namespace StaticAnalyzer
                         // Console.WriteLine(">");
 
                         break;
-                    case XmlNodeType.Text: //Display the text in each element.
-                        Console.WriteLine(reader.Value);
+                    case XmlNodeType.Text:                
                         break;
-                    case XmlNodeType.EndElement: //Display the end of the element.
-                                                 // Console.Write("</" + reader.Name);
-                                                 //Console.WriteLine(">");
+                    case XmlNodeType.EndElement: 
                         break;
                 }
 
+            }
+
+            for(int k=0;k<attributeName.Count;k++)
+            {
+                NDependMetrics.Add(attributeName[k], attributeValue[k]);
+            }
+
+            foreach(var item in NDependMetrics)
+            {
+                Console.WriteLine(item);
             }
         
         }

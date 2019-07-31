@@ -1,32 +1,35 @@
 ﻿using System;
-using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Diagnostics;
+using System.Xml.Linq;
 
 namespace StaticAnalyzer
 {
     class FxCop : StaticAnalysisTool
     {
-        string exeFileLocation;
-        string args;
-        public void prepareInput(string[] filename)
+
+        public bool prepareInput(string[] filename)
         {
-
-            exeFileLocation = @"C:\Program Files (x86)\Microsoft Fxcop 10.0\FxCopCmd.exe";
-            args = @"/p:C:\Users\320066545\source\repos\G7CaseStudy1\StaticAnalyzer\FxCopInput.FxCop /out:C:\Users\320066545\source\repos\G7CaseStudy1\StaticAnalyzer\StaticAnalysisReports\FxCopInput.xml";
-            ExecuteStaticAnalysisTool(exeFileLocation, args);
-
-
-        }
-
-        public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
-        {
-            using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
+            bool success = true;
+            if (!File.Exists(@"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\FxCopInput.FxCop"))
             {
-                ExeToExecute.WaitForExit();
+                success = false;
+                return success;
             }
+            XElement root = XElement.Load(@"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\FxCopInput.FxCop");
+            XElement requiredTag = (from elem in root.DescendantsAndSelf()
+                                   where elem.Name == "Target"
+                                   select elem).FirstOrDefault();
+            if(requiredTag != null)
+            {
+                Console.WriteLine(requiredTag.Attribute("Name").Value);
+                //requiredTag.Attribute("Name").SetValue("check");
+                root.Save(@"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\FxCopInput.FxCop");
+            }
+            return success;
         }
 
         public void processOutput()
