@@ -25,12 +25,8 @@ namespace StaticAnalyzer
                 
                 switch (reader.NodeType)
                 {
-                    
-
                     case XmlNodeType.Element: // The node is an element.
                         //Console.Write("<" + reader.Name);
-
-
                         if(reader.Name=="Metric")
                         {
                             while(reader.MoveToNextAttribute())
@@ -53,14 +49,7 @@ namespace StaticAnalyzer
                                     string ans = reader.Value;
                                     // Console.WriteLine(ans);
                                     // int x = 0;
-
-
-                                    attributeValue = ans.Split('|');
-
-                                    
-
-                                    
-
+                                    attributeValue = ans.Split('|');                
                                 }
                                 i++;
                             }
@@ -69,12 +58,9 @@ namespace StaticAnalyzer
                         // Console.WriteLine(">");
 
                         break;
-                    case XmlNodeType.Text: //Display the text in each element.
-                        Console.WriteLine(reader.Value);
+                    case XmlNodeType.Text:                
                         break;
-                    case XmlNodeType.EndElement: //Display the end of the element.
-                                                 // Console.Write("</" + reader.Name);
-                                                 //Console.WriteLine(">");
+                    case XmlNodeType.EndElement: 
                         break;
                 }
 
