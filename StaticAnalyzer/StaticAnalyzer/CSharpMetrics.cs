@@ -1,6 +1,8 @@
 ﻿using System;
 using System.IO;
 using System.Xml.Linq;
+using System.Linq;
+using System.Collections.Generic;
 
 namespace StaticAnalyzer
 {
@@ -8,6 +10,7 @@ namespace StaticAnalyzer
     {
         public string inputProjFile = @"..\..\..\CSharpMetricInput";
         public string exePath = @"C:\Program Files(x86)\SemanticDesigns\DMS\Executables\DMSSoftwareMetrics.cmd";
+        Dictionary<string, Dictionary<string, string>> MetricMap = new Dictionary<string, Dictionary<string, string>>();
 
         public bool prepareInput(string[] filename)
         {
@@ -38,6 +41,36 @@ namespace StaticAnalyzer
         {
             XElement root = XElement.Load("..\\..\\..\\StaticAnalysisReports\\CSharpMetricReport.xml");
             //Processing of XML to get required data
+            var fileElement = from elem in root.DescendantsAndSelf()
+                              where elem.Name == "FileMetrics"
+                              select elem;
+            foreach (var elem in fileElement)
+            {
+                XElement filenameElement = elem.Descendants("FileName").FirstOrDefault();
+                if (filenameElement != null) {
+                    Dictionary<string, string> MetricOfEachFile = new Dictionary<string, string>();
+                    foreach (var child in elem.Descendants("FileSummary").Elements())
+                    {
+                        string key = child.Name.ToString();
+                        string value = child.Value;
+                        MetricOfEachFile.Add(key, value);
+                    }
+                    string filename = filenameElement.Value.ToString();
+                    MetricMap.Add(filename, MetricOfEachFile);
+                }
+            }
+        }
+        public void displayOutput()
+        {
+            foreach (var key in MetricMap.Keys)
+            {
+                Console.WriteLine(key);
+                foreach(KeyValuePair<string,string> MetricMapValue in MetricMap[key])
+                {
+                    Console.WriteLine(MetricMapValue.Key + "\t" + MetricMapValue.Value);
+                }
+
+            }
         }
 
     }

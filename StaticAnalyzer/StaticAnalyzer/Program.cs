@@ -19,19 +19,15 @@ namespace StaticAnalyzer
             toolInputProcessing = true/*csharpmetric.prepareInput(filename)*/;
             if (toolInputProcessing)
             {
-                string executableDirectory = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
-                //exeFileAndLocation = @"C:\Program Files (x86)\SemanticDesigns\DMS\Executables\DMSSoftwareMetrics.cmd";
-                string arguments = "CSharp~v6" + executableDirectory + "..\\..\\..\\CSharpMetricInput";
-                ExecuteStaticAnalysisTool(csharpmetric.exePath, arguments);
+                //string executableDirectory = Path.GetDirectoryName(Path.GetDirectoryName(System.IO.Directory.GetCurrentDirectory()));
+                //string arguments = "CSharp~v6" + executableDirectory + "..\\..\\..\\CSharpMetricInput";
+                //ExecuteStaticAnalysisTool(csharpmetric.exePath, arguments);
+                csharpmetric.processOutput();
+                csharpmetric.displayOutput();
             }
 
             FxCop fxcop = new FxCop();
             toolInputProcessing = fxcop.prepareInput(exePath);
-            
-            
-            Ndepend ndependout=new Ndepend();
-            string outpath=ndependout.prepareInput(filename);
-            ndependout.processOutput();
             //csharpmetric.processOutput();
 
             //exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
