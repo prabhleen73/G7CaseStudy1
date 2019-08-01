@@ -9,6 +9,6 @@ Procedure :
 
   Input--Solution Directory(e.g: C:\Users\320069097\source\repos\G7CaseStudy1\StaticAnalyzer)
   
-  Intermediate Output-- XML file
+  Intermediate Output-- XML file-->Then this XML will be Parsed 
   
   Output--- Full List of Metrics for respective tools
