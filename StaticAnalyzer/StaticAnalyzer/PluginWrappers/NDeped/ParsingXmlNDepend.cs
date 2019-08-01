@@ -54,7 +54,7 @@ namespace StaticAnalyzer
                 }
             }
 
-            for (int k = 0; k < attributeName.Count; k++)
+            for (int k = 0; k < attributeValue.Length; k++)
             {
                 NDependMetrics.Add(attributeName[k], attributeValue[k]);
             }

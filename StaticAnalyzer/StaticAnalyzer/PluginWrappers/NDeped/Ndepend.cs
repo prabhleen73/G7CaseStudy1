@@ -16,6 +16,7 @@ namespace StaticAnalyzer
         private string _argument;
         private string _outputDirectory;
         private string _inputProjFile;
+        private string _currentDirectory;
         public Ndepend(string InstallationPath)
         {
             _installationPath = InstallationPath;
@@ -23,9 +24,12 @@ namespace StaticAnalyzer
         public bool prepareInput(string inputDirectory)
         {
             bool success = true;
+            _currentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
             _inputDirectory = inputDirectory;
-            _outputDirectory = _inputDirectory + "\\StaticAnalysisReports";
-            _inputProjFile = _inputDirectory + "\\NDependInput.ndproj";
+            _outputDirectory = _currentDirectory + "\\StaticAnalysisReports";
+            _inputProjFile = _currentDirectory + "\\NDependInput.ndproj";
+           
+
 
             XElement root = XElement.Load(_inputProjFile);
             XElement requiredVal = (from elem in root.DescendantsAndSelf()
