@@ -9,8 +9,10 @@ namespace StaticAnalyzer
 {
     class CSharpMetrics : IStaticAnalysisTool
     {
-        public string inputProjFile = @"..\..\..\CSharpMetricInput";//private
-        //public string exePath = @"C:\Program Files (x86)\SemanticDesigns\DMS\Executables\DMSSoftwareMetrics.cmd";
+        private string _inputDirectory;
+        private string _argument;
+        private string _outputFileDirectory;
+        private string _inputProjFile;
         Dictionary<string, Dictionary<string, string>> MetricMap = new Dictionary<string, Dictionary<string, string>>();
         private readonly string _installationPath;
 
@@ -21,21 +23,25 @@ namespace StaticAnalyzer
         public bool prepareInput( string inputDirectory)
         {
             bool success = true;
-            if (!File.Exists(inputProjFile))
+            _inputDirectory = inputDirectory;
+            _outputFileDirectory = _inputDirectory + "\\StaticAnalysisReports\\CSharpMetricReport";
+            _inputProjFile = _inputDirectory + "\\CSharpMetricInput";
+            if (!File.Exists(_inputProjFile))
             {
                 success = false;
                 return success;
             }
-            string requiredString = "CSharp~v6 Metrics 1.0\n<C:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\StaticAnalyzer\nC:\\Users\\320050767\\Source\\Repos\\G7CaseStudy13\\StaticAnalyzer\\StaticAnalysisReports\\CSharpMetricReport";
+            List<string> filenames = GetFiles(_inputDirectory);
+            string requiredString = "CSharp~v6 Metrics 1.0\n " +"<" +_inputDirectory+"\n"+ _outputFileDirectory;
             try
             {
-                using (StreamWriter streamwriter = new StreamWriter(inputProjFile))
+                using (StreamWriter streamwriter = new StreamWriter(_inputProjFile))
                 {
                     streamwriter.WriteLine(requiredString);
-                    //foreach (var str in filename)
-                    //{
-                    //    streamwriter.WriteLine(str);
-                    //}
+                    foreach (var str in filenames)
+                    {
+                        streamwriter.WriteLine(str);
+                    }
                 }
             }
             catch (Exception e)
@@ -48,11 +54,10 @@ namespace StaticAnalyzer
 
         public void processOutput()
         {
-            string argument = @"CSharp~v6 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricInput";
-            ExecuteStaticAnalysisTool(_installationPath, argument);
+            _argument = PrepareArgument(_inputDirectory, _inputProjFile);
+            ExecuteStaticAnalysisTool(_installationPath, _argument);
 
-
-            XElement root = XElement.Load(@"C:\Users\320050767\OneDrive - Philips\Desktop\configuration.xml");
+            XElement root = XElement.Load(_outputFileDirectory+ "\\CSharpMetricReport.xml");
             //Processing of XML to get required data
             var fileElement = from elem in root.DescendantsAndSelf()
                               where elem.Name == "FileMetrics"
@@ -97,5 +102,16 @@ namespace StaticAnalyzer
             }
         }
 
+        public static List<string> GetFiles(string _inputDirectory)
+        {
+            List<string> filenames = new List<string>();
+            filenames = Directory.GetFiles(_inputDirectory,"*.cs",SearchOption.AllDirectories).ToList();
+            return filenames; 
+        }
+        public static string PrepareArgument(string InputDirectory,string InputProjFile)
+        {
+            string argument = "CSharp~v6 " + InputProjFile;
+            return argument;
+        }
     }
 }

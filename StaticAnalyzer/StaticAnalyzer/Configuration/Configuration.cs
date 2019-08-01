@@ -27,7 +27,7 @@ namespace StaticAnalyzer
             var configurationRoot = from element in root.DescendantsAndSelf()
                                          where element.Name == "configuration"
                                          select element;
-            foreach (var child in configurationRoot)
+            foreach (var child in configurationRoot.Elements())
             {
                 _configurations.Add(child.Name.ToString(),child);
             }

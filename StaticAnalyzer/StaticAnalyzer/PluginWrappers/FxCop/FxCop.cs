@@ -10,7 +10,11 @@ namespace StaticAnalyzer
 {
     class FxCop : IStaticAnalysisTool
     {
-
+        private string _installationPath;
+        public FxCop(string InstallationPath)
+        {
+            _installationPath = InstallationPath;
+        }
         public bool prepareInput(string inputDirectory)
         {
             bool success = true;
