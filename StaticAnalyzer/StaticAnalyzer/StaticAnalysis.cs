@@ -56,8 +56,8 @@ namespace StaticAnalyzer
             {
                 foreach (var tool in _staticAnalysisPlugins)
                 {
-                    tool.prepareInput(inputPath);
-                    tool.processOutput();
+                    tool.PrepareInput(inputPath);
+                    tool.ProcessOutput();
                     DisplayResult();
                 }
             }

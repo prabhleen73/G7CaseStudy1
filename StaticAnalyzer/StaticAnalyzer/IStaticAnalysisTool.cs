@@ -8,8 +8,8 @@ namespace StaticAnalyzer
 {
     public interface IStaticAnalysisTool
     {
-        bool prepareInput(string inputDirectory);
-        void processOutput();
+        bool PrepareInput(string inputDirectory);
+        void ProcessOutput();
 
     }
 }

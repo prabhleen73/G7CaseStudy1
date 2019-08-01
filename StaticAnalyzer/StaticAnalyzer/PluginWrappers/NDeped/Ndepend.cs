@@ -21,7 +21,7 @@ namespace StaticAnalyzer
         {
             _installationPath = InstallationPath;
         }
-        public bool prepareInput(string inputDirectory)
+        public bool PrepareInput(string inputDirectory)
         {
             bool success = true;
             _currentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
@@ -45,30 +45,40 @@ namespace StaticAnalyzer
             root.Save(_inputProjFile);
             return success;
         }
-
-        public void processOutput()
+        static public bool CheckFile(string Filename)
+        {
+            bool success = false;
+            if (File.Exists(Filename))
+            {
+                success = true;
+            }
+            return success;
+        }
+        public void ProcessOutput()
         {
            
             string argument = PrepareArgument(_inputProjFile, _outputDirectory);
             ExecuteStaticAnalysisTool(_installationPath, argument);
-
-            string outputFileLocation = _outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
-            ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(outputFileLocation);
+            if (CheckFile(_outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml"))
+            {
+                string outputFileLocation = _outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
+                ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(outputFileLocation);
+            }
         }
-        public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
+        private static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
         {
             using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
             {
                 ExeToExecute.WaitForExit();
             }
         }
-        public static string GetFiles(string _inputDirectory)
+        private static string GetFiles(string _inputDirectory)
         {
             string filename;
             filename = Directory.GetFiles(_inputDirectory, "*.sln", SearchOption.AllDirectories).First();
             return filename;
         }
-        public static string PrepareArgument(string InputProjFile, string OutputDirectory)
+        private static string PrepareArgument(string InputProjFile, string OutputDirectory)
         {
             string argument = InputProjFile + " /LogTrendMetrics /OutDir " + OutputDirectory;
             return argument;

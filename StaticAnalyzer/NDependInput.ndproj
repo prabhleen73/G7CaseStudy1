@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <NDepend AppName="StaticAnalyzer" Platform="DotNet" FileWrittenByProductVersion="2019.2.6.9270">
   <OutputDir KeepXmlFiles="False">C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\NDependOut</OutputDir>
   <IDEFiles>

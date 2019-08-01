@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="StaticAnalyzer.Configuration">
+    <Position X="1.25" Y="1.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABIAAAAAABAAAAAAAAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>Configuration\Configuration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.ToolMeta">
+    <Position X="3" Y="4.5" Width="1.5" />
+    <NestedTypes>
+      <Class Name="StaticAnalyzer.ToolMeta.WrapperMeta" Collapsed="true">
+        <TypeIdentifier>
+          <NewMemberFileName>Configuration\ToolMeta.cs</NewMemberFileName>
+        </TypeIdentifier>
+      </Class>
+    </NestedTypes>
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQgAAAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>Configuration\ToolMeta.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.ToolsConfiguration" Collapsed="true">
+    <Position X="4.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAACAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Configuration\ToolsConfiguration.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.CSharpMetrics" BaseTypeListCollapsed="true">
+    <Position X="10.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAoAABQQAgBABBAAAAAgAEIAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>PluginWrappers\CSharpMetric\CSharpMetrics.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StaticAnalyzer.FxCop" BaseTypeListCollapsed="true">
+    <Position X="14.25" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQAAABABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>PluginWrappers\FxCop\FxCop.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StaticAnalyzer.Parser">
+    <Position X="6" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAyAAAAAAAABAAABAACAAAAAAQCEAQAAAAAAAAA=</HashCode>
+      <FileName>PluginWrappers\FxCop\ParsingFxCop.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.Ndepend" BaseTypeListCollapsed="true">
+    <Position X="12.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABQQAgBABAAAAAAggEIAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>PluginWrappers\NDeped\Ndepend.cs</FileName>
+    </TypeIdentifier>
+    <Lollipop Position="0.2" />
+  </Class>
+  <Class Name="StaticAnalyzer.ParsingXmlNDepend">
+    <Position X="6.5" Y="2.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAA=</HashCode>
+      <FileName>PluginWrappers\NDeped\ParsingXmlNDepend.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.Program">
+    <Position X="8.5" Y="4.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAACAABAAAAAA=</HashCode>
+      <FileName>Program.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="StaticAnalyzer.StaticAnalysisApplication">
+    <Position X="8.25" Y="1.75" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAABAAAI=</HashCode>
+      <FileName>StaticAnalysis.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="System.Object" Collapsed="true">
+    <Position X="8.5" Y="0.75" Width="1.5" />
+    <TypeIdentifier />
+  </Class>
+  <Interface Name="StaticAnalyzer.IStaticAnalysisTool">
+    <Position X="10.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>IStaticAnalysisTool.cs</FileName>
+    </TypeIdentifier>
+  </Interface>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>
