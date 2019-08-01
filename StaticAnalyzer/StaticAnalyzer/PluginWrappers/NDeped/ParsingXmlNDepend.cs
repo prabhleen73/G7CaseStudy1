@@ -20,13 +20,10 @@ namespace StaticAnalyzer
             Dictionary<string, string> NDependMetrics = new Dictionary<string, string>();
             List<string> attributeName = new List<string>();
             string[] attributeValue = null;
-            while (reader.Read() && flag == 0)
+             while (reader.Read() && flag == 0)
             {
-
-                switch (reader.NodeType)
+                if(reader.NodeType==XmlNodeType.Element)      
                 {
-                    case XmlNodeType.Element: // The node is an element.
-                        //Console.Write("<" + reader.Name);
                         if (reader.Name == "Metric")
                         {
                             while (reader.MoveToNextAttribute())
@@ -41,29 +38,20 @@ namespace StaticAnalyzer
                         if (reader.Name == "R" && flag == 0)
                         {
                             int i = 0;
-                            while (reader.MoveToNextAttribute()) // Read the attributes.
+                            while (reader.MoveToNextAttribute()) 
                             {
                                 if (i == 2 && reader.Name == "V")
                                 {
-                                    //Console.Write("Debt is " + reader.Name + "='" + reader.Value + "");
+                                   
                                     string ans = reader.Value;
-                                    // Console.WriteLine(ans);
-                                    // int x = 0;
+                                  
                                     attributeValue = ans.Split('|');
                                 }
                                 i++;
                             }
                             flag = 1;
-                        }
-                        // Console.WriteLine(">");
-
-                        break;
-                    case XmlNodeType.Text:
-                        break;
-                    case XmlNodeType.EndElement:
-                        break;
+                        }    
                 }
-
             }
 
             for (int k = 0; k < attributeName.Count; k++)
