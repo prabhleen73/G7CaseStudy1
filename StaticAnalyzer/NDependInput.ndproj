@@ -2,7 +2,7 @@
 <NDepend AppName="StaticAnalyzer" Platform="DotNet" FileWrittenByProductVersion="2019.2.6.9270">
   <OutputDir KeepXmlFiles="False">C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\NDependOut</OutputDir>
   <IDEFiles>
-    <IDEFile FilePath="C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer.sln" Filters="-test" Configuration="DEBUG|AnyCPU" />
+    <IDEFile FilePath="C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorld\HelloWorld.sln" Filters="-test" Configuration="DEBUG|AnyCPU" />
   </IDEFiles>
   <Assemblies />
   <FrameworkAssemblies />

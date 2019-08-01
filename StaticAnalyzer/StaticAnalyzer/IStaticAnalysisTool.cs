@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace StaticAnalyzer
 {
-    interface StaticAnalysisTool
+    interface IStaticAnalysisTool
     {
-        bool prepareInput(string[] filename);
+        bool prepareInput(string inputDirectory);
         void processOutput();
 
     }
