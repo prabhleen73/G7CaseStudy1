@@ -10,11 +10,6 @@ namespace StaticAnalyzer
     class StaticAnalysisApplication
     {
         private IEnumerable<IStaticAnalysisTool> _staticAnalysisPlugins;
-        public StaticAnalysisApplication(IEnumerable<IStaticAnalysisTool> staticAnalysisPlugins)
-        {
-            _staticAnalysisPlugins = staticAnalysisPlugins;
-        }
-
         public StaticAnalysisApplication(IEnumerable<ToolMeta> staticAnalysisPluginMeta)
         {
             _staticAnalysisPlugins = IntializeToolsList(staticAnalysisPluginMeta);
@@ -26,7 +21,7 @@ namespace StaticAnalyzer
 
             foreach (var toolMeta in configuredTools)
             {
-                var type = Type.GetType(toolMeta.Wrapper.ClassName);
+                var type = Type.GetType(/*"StaticAnalyzer."*/GetType().Namespace+"."+toolMeta.Wrapper.ClassName);
                 if (!(type == null))
                 {
                     object tool;

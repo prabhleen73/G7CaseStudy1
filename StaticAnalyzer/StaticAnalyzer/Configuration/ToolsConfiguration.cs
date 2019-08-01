@@ -23,10 +23,11 @@ namespace StaticAnalyzer
                 ToolMeta.WrapperMeta wrapperMeta =
                     new ToolMeta.WrapperMeta(
                         element.Attribute("wrapperClassName").Value);
+
                 _tools.Add(new ToolMeta
                   (
                     element.Attribute("name").Value,
-                    element.Attribute("path").Value,
+                    element.Attribute("installationPath").Value,
                     wrapperMeta
                   ));
             }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,39 +9,47 @@ using System.Xml.Linq;
 
 namespace StaticAnalyzer
 {
-    class Ndepend : IStaticAnalysisTool
+    public class Ndepend : IStaticAnalysisTool
     {
-        string xmloutpath = " ";//initialize this to xmloutpath
+        private string _installationPath;
+        private string _inputDirectory;
+        private string _argument;
+        private string _outputDirectory;
+        private string _inputProjFile;
+        public Ndepend(string InstallationPath)
+        {
+            _installationPath = InstallationPath;
+        }
         public bool prepareInput(string inputDirectory)
         {
-            int i = 0;
-            while (true)//foreach
+            bool success = true;
+            _inputDirectory = inputDirectory;
+            _outputDirectory = _inputDirectory + "\\StaticAnalysisReports";
+            _inputProjFile = _inputDirectory + "\\NDependInput.ndproj";
+
+            XElement root = XElement.Load(_inputProjFile);
+            XElement requiredVal = (from elem in root.DescendantsAndSelf()
+                                    where elem.Name == "IDEFile"
+                                    select elem).FirstOrDefault();
+            if (requiredVal == null)
             {
-                XElement root = XElement.Load(@"C:\Users\320069097\source\repos\G7CaseStudy1-prev\StaticAnalysisTool\StaticAnalysisTool.ndproj");
-                XElement requiredVal = (from elem in root.DescendantsAndSelf()
-                                        where elem.Name == "IDEFile"
-                                        select elem).FirstOrDefault();
-                if (requiredVal != null)
-                {
-                    Console.WriteLine(requiredVal.Attribute("FilePath").Value);
-                }
-                requiredVal.Attribute("FilePath").SetValue(@"C:\Users\320069097\source\repos\G7CaseStudy1\StaticAnalysisTool\" + ".sln");
-
-                root.Save(@"C:\Users\320069097\source\repos\G7CaseStudy1-prev\StaticAnalysisTool\StaticAnalysisTool.ndproj");
-                i++;
+                success = false;
+                return success;
             }
-
-            return true;
+            string slnFilename = GetFiles(_inputDirectory);
+            requiredVal.Attribute("FilePath").SetValue(slnFilename);
+            root.Save(_inputProjFile);
+            return success;
         }
 
         public void processOutput()
         {
-            string exeFileAndLocation = @"C:\Users\320050767\Downloads\NDepend_2019.2.6.9270\NDepend.Console.exe";
-            string arguments = @"C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalyzer.ndproj  /LogTrendMetrics /OutDir C:\Users\320050767\documents\visual-studio-2015\Projects\StaticAnalyzer\StaticAnalysisReports";
-            ExecuteStaticAnalysisTool(exeFileAndLocation, arguments);
+           
+            string argument = PrepareArgument(_inputProjFile, _outputDirectory);
+            ExecuteStaticAnalysisTool(_installationPath, argument);
 
-            string xmllocation = "NDependTrendData2019.xml";//initialize this to xmloutpath
-            ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(xmllocation);
+            string outputFileLocation = _outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
+            ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(outputFileLocation);
         }
         public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
         {
@@ -48,6 +57,17 @@ namespace StaticAnalyzer
             {
                 ExeToExecute.WaitForExit();
             }
+        }
+        public static string GetFiles(string _inputDirectory)
+        {
+            string filename;
+            filename = Directory.GetFiles(_inputDirectory, "*.sln", SearchOption.AllDirectories).First();
+            return filename;
+        }
+        public static string PrepareArgument(string InputProjFile, string OutputDirectory)
+        {
+            string argument = InputProjFile + " /LogTrendMetrics /OutDir " + OutputDirectory;
+            return argument;
         }
 
     }

@@ -9,36 +9,36 @@ using System.IO;
 
 namespace StaticAnalyzer
 {
-    class ParsingXmlNDepend
+    internal class ParsingXmlNDepend
     {
         public static void ShowingResultsAfterParsingNDependXml(string argument)
         {
             //string ques = Console.ReadLine();
 
-             XmlTextReader reader = new XmlTextReader(argument);
+            XmlTextReader reader = new XmlTextReader(argument);
             int flag = 0;
             Dictionary<string, string> NDependMetrics = new Dictionary<string, string>();
             List<string> attributeName = new List<string>();
             string[] attributeValue = null;
-            while (reader.Read()&&flag==0)
+            while (reader.Read() && flag == 0)
             {
-                
+
                 switch (reader.NodeType)
                 {
                     case XmlNodeType.Element: // The node is an element.
                         //Console.Write("<" + reader.Name);
-                        if(reader.Name=="Metric")
+                        if (reader.Name == "Metric")
                         {
-                            while(reader.MoveToNextAttribute())
+                            while (reader.MoveToNextAttribute())
                             {
-                                if(reader.Name=="Name")
+                                if (reader.Name == "Name")
                                 {
                                     attributeName.Add(reader.Value);
                                 }
                             }
                         }
 
-                        if (reader.Name == "R"&&flag==0)
+                        if (reader.Name == "R" && flag == 0)
                         {
                             int i = 0;
                             while (reader.MoveToNextAttribute()) // Read the attributes.
@@ -49,33 +49,33 @@ namespace StaticAnalyzer
                                     string ans = reader.Value;
                                     // Console.WriteLine(ans);
                                     // int x = 0;
-                                    attributeValue = ans.Split('|');                
+                                    attributeValue = ans.Split('|');
                                 }
                                 i++;
                             }
-                            flag =1;
+                            flag = 1;
                         }
                         // Console.WriteLine(">");
 
                         break;
-                    case XmlNodeType.Text:                
+                    case XmlNodeType.Text:
                         break;
-                    case XmlNodeType.EndElement: 
+                    case XmlNodeType.EndElement:
                         break;
                 }
 
             }
 
-            for(int k=0;k<attributeName.Count;k++)
+            for (int k = 0; k < attributeName.Count; k++)
             {
                 NDependMetrics.Add(attributeName[k], attributeValue[k]);
             }
 
-            foreach(var item in NDependMetrics)
+            foreach (var item in NDependMetrics)
             {
                 Console.WriteLine(item);
             }
-        
+
         }
     }
 }
