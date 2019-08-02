@@ -7,7 +7,7 @@ using System.Diagnostics;
 
 namespace StaticAnalyzer
 {
-    class CSharpMetrics : IStaticAnalysisTool
+    public class CSharpMetrics : IStaticAnalysisTool
     {
         private string _inputDirectory;
         private string _argument;
@@ -21,7 +21,7 @@ namespace StaticAnalyzer
         {
             _installationPath = installationPath;
         }
-        public bool prepareInput( string inputDirectory)
+        public bool PrepareInput( string inputDirectory)
         {
             bool success = true;
             _inputDirectory = inputDirectory;
@@ -53,39 +53,54 @@ namespace StaticAnalyzer
 
             return success;
         }
-
-        public void processOutput()
+        static public bool CheckFile(string Filename)
+        {
+            bool success = false;
+            if (File.Exists(Filename))
+            {
+                success = true;
+            }
+            return success;
+        }
+        public void ProcessOutput()
         {
             _argument = PrepareArgument(_inputDirectory, _inputProjFile);
             ExecuteStaticAnalysisTool(_installationPath, _argument);
 
-            XElement root = XElement.Load(_outputFileDirectory+ "\\CSharpMetricReport.xml");
-            //Processing of XML to get required data
-            var fileElement = from elem in root.DescendantsAndSelf()
-                              where elem.Name == "FileMetrics"
-                              select elem;
-            foreach (var elem in fileElement)
+            if (CheckFile(_outputFileDirectory + "\\CSharpMetricReport.xml"))
             {
-                XElement filenameElement = elem.Descendants("FileName").FirstOrDefault();
-                if (filenameElement != null)
+                XElement root = XElement.Load(_outputFileDirectory + "\\CSharpMetricReport.xml");
+                //Processing of XML to get required data
+                var fileElement = from elem in root.DescendantsAndSelf()
+                                  where elem.Name == "FileMetrics"
+                                  select elem;
+                foreach (var elem in fileElement)
                 {
-                    Dictionary<string, string> MetricOfEachFile = new Dictionary<string, string>();
-                    foreach (var child in elem.Descendants("FileSummary").Elements())
+                    XElement filenameElement = elem.Descendants("FileName").FirstOrDefault();
+                    if (filenameElement != null)
                     {
-                        string key = child.Name.ToString();
-                        string value = child.Value;
-                        MetricOfEachFile.Add(key, value);
+                        Dictionary<string, string> MetricOfEachFile = new Dictionary<string, string>();
+                        foreach (var child in elem.Descendants("FileSummary").Elements())
+                        {
+                            string key = child.Name.ToString();
+                            string value = child.Value;
+                            MetricOfEachFile.Add(key, value);
+                        }
+                        string filename = filenameElement.Value.ToString();
+                        MetricMap.Add(filename, MetricOfEachFile);
+
                     }
-                    string filename = filenameElement.Value.ToString();
-                    MetricMap.Add(filename, MetricOfEachFile);
-                    
                 }
+                displayOutput();
             }
-            displayOutput();
         }
 
-        public void displayOutput()
+        private void displayOutput()
         {
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*******************CSharpMetrics Result********************");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine();
             foreach (var key in MetricMap.Keys)
             {
                 Console.WriteLine(key);
@@ -98,7 +113,7 @@ namespace StaticAnalyzer
         }
 
 
-        public static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
+        private static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
         {
             using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
             {
@@ -106,13 +121,13 @@ namespace StaticAnalyzer
             }
         }
 
-        public static List<string> GetFiles(string _inputDirectory)
+        private static List<string> GetFiles(string _inputDirectory)
         {
             List<string> filenames = new List<string>();
             filenames = Directory.GetFiles(_inputDirectory,"*.cs",SearchOption.AllDirectories).ToList();
             return filenames; 
         }
-        public static string PrepareArgument(string InputDirectory,string InputProjFile)
+        private static string PrepareArgument(string InputDirectory,string InputProjFile)
         {
             string argument = "CSharp~v6 " + InputProjFile;
             return argument;

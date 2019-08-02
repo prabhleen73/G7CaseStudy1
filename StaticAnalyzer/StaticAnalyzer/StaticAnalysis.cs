@@ -56,9 +56,8 @@ namespace StaticAnalyzer
             {
                 foreach (var tool in _staticAnalysisPlugins)
                 {
-                    tool.prepareInput(inputPath);
-                    tool.processOutput();
-                    DisplayResult();
+                    tool.PrepareInput(inputPath);
+                    tool.ProcessOutput();
                 }
             }
             catch
@@ -66,11 +65,6 @@ namespace StaticAnalyzer
                 exitCode = -2;
             }
             return exitCode;
-        }
-
-        private void DisplayResult()
-        {
-
         }
     }
 }

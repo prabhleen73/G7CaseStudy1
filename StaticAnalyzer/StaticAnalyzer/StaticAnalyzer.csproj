@@ -22,6 +22,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>StaticAnalyzer.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -31,6 +32,10 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <CodeAnalysisRuleSet>StaticAnalyzer.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject>StaticAnalyzer.Program</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -55,10 +60,13 @@
     <Compile Include="IStaticAnalysisTool.cs" />
     <Compile Include="Configuration\ToolMeta.cs" />
     <Compile Include="StaticAnalysis.cs" />
+    <Compile Include="TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="ClassDiagram1.cd" />
+    <None Include="ClassDiagram2.cd" />
+    <None Include="StaticAnalyzer.ruleset" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configuration\Configuration.xml" />
