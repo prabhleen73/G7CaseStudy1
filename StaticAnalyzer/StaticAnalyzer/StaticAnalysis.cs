@@ -58,7 +58,6 @@ namespace StaticAnalyzer
                 {
                     tool.PrepareInput(inputPath);
                     tool.ProcessOutput();
-                    DisplayResult();
                 }
             }
             catch
@@ -66,11 +65,6 @@ namespace StaticAnalyzer
                 exitCode = -2;
             }
             return exitCode;
-        }
-
-        private void DisplayResult()
-        {
-
         }
     }
 }

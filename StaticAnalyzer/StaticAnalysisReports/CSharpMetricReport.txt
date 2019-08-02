@@ -1,0 +1,204 @@
+                                          CSharp Software Metrics Summary
+                                          Semantic Designs, Inc.
+                                          http://www.semdesigns.com
+
+Summary:
+    52 lines of source.
+    30 lines of CSharp code.
+    17 lines of comment.
+    5 files.
+    1 types.
+    1 methods.
+    Aggregate cyclomatic complexity: 1
+    Mean cyclomatic complexity: 1.00
+    Median cyclomatic complexity: 1.00
+    Conditional statements: 0
+    Decision density: 0.13
+    Max loop depth: 0
+    Max conditional nesting depth: 0
+    Halstead unique operators: 14
+    Halstead unique operands: 52
+    Halstead operator occurrence: 73
+    Halstead operand occurrence: 76
+    Halstead program length: 149
+    Halstead program vocabulary: 66
+    Halstead program volume: 900.61
+    Halstead program difficulty: 10.23
+    Halstead program effort: 9213.98
+    Halstead bug prediction: 0.30
+    SEI maintainability index: 95.14
+
+        FILE C:/Users/320050767/Source/Repos/G7CaseStudy13/HelloWorld/HelloWorld/Program.cs
+            16 lines of source.
+            15 lines of CSharp code.
+            0 lines of comment.
+            1 types.
+            1 methods.
+            Aggregate cyclomatic complexity: 1
+            Mean cyclomatic complexity: 1.00
+            Median cyclomatic complexity: 1.00
+            Conditional Statements: 0
+            Decision density: 0.13
+            Max loop depth: 0
+            Max conditional nesting depth: 0
+            Halstead unique operators: 8
+            Halstead unique operands: 23
+            Halstead operator occurrence: 26
+            Halstead operand occurrence: 27
+            Halstead program length: 53
+            Halstead program vocabulary: 31
+            Halstead program volume: 262.57
+            Halstead program difficulty: 4.70
+            Halstead program effort: 1232.95
+            Halstead bug prediction: 0.09
+            SEI maintainability index: 106.37
+
+            CLASS Program @ line 9
+                8 lines of CSharp code.
+                0 lines of comment.
+                1 methods.
+                Aggregate cyclomatic complexity: 1
+                Mean cyclomatic complexity: 1.00
+                Median cyclomatic complexity: 1.00
+                Conditional statements: 0
+                Decision density: 0.13
+                Max loop depth: 0
+                Max conditional nesting depth: 0
+                Halstead unique operators: 6
+                Halstead unique operands: 9
+                Halstead operator occurrence: 8
+                Halstead operand occurrence: 9
+                Halstead program length: 17
+                Halstead program vocabulary: 15
+                Halstead program volume: 66.42
+                Halstead program difficulty: 3.00
+                Halstead program effort: 199.25
+                Halstead bug prediction: 0.02
+                SEI maintainability index: 116.56
+
+                METHOD Main @ line 11
+                    4 lines of CSharp code.
+                    0 lines of comment.
+                    Cyclomatic complexity: 1
+                    Conditional statements: 0
+                    Decision density: 0.25
+                    Max loop depth: 0
+                    Max conditional nesting depth: 0
+                    Halstead unique operators: 5
+                    Halstead unique operands: 8
+                    Halstead operator occurrence: 6
+                    Halstead operand occurrence: 8
+                    Halstead program length: 14
+                    Halstead program vocabulary: 13
+                    Halstead program volume: 51.81
+                    Halstead program difficulty: 2.50
+                    Halstead program effort: 129.52
+                    Halstead bug prediction: 0.02
+                    SEI maintainability index: 127.78
+
+
+        FILE C:/Users/320050767/Source/Repos/G7CaseStudy13/HelloWorld/HelloWorld/Properties/AssemblyInfo.cs
+            36 lines of source.
+            15 lines of CSharp code.
+            17 lines of comment.
+            0 types.
+            0 methods.
+            Aggregate cyclomatic complexity: 0
+            Mean cyclomatic complexity: 0.00
+            Median cyclomatic complexity: 0.00
+            Conditional Statements: 0
+            Decision density: 0.00
+            Max loop depth: 0
+            Max conditional nesting depth: 0
+            Halstead unique operators: 6
+            Halstead unique operands: 29
+            Halstead operator occurrence: 47
+            Halstead operand occurrence: 49
+            Halstead program length: 96
+            Halstead program vocabulary: 35
+            Halstead program volume: 0.00
+            Halstead program difficulty: 0.00
+            Halstead program effort: 0.00
+            Halstead bug prediction: 0.00
+            SEI maintainability index: 0.00
+
+
+        FILE C:/Users/320050767/Source/Repos/G7CaseStudy13/HelloWorld/HelloWorld/obj/Debug/TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs
+            0 lines of source.
+            0 lines of CSharp code.
+            0 lines of comment.
+            0 types.
+            0 methods.
+            Aggregate cyclomatic complexity: 0
+            Mean cyclomatic complexity: 0.00
+            Median cyclomatic complexity: 0.00
+            Conditional Statements: 0
+            Decision density: 0.00
+            Max loop depth: 0
+            Max conditional nesting depth: 0
+            Halstead unique operators: 0
+            Halstead unique operands: 0
+            Halstead operator occurrence: 0
+            Halstead operand occurrence: 0
+            Halstead program length: 0
+            Halstead program vocabulary: 0
+            Halstead program volume: 0.00
+            Halstead program difficulty: 0.00
+            Halstead program effort: 0.00
+            Halstead bug prediction: 0.00
+            SEI maintainability index: 0.00
+
+
+        FILE C:/Users/320050767/Source/Repos/G7CaseStudy13/HelloWorld/HelloWorld/obj/Debug/TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs
+            0 lines of source.
+            0 lines of CSharp code.
+            0 lines of comment.
+            0 types.
+            0 methods.
+            Aggregate cyclomatic complexity: 0
+            Mean cyclomatic complexity: 0.00
+            Median cyclomatic complexity: 0.00
+            Conditional Statements: 0
+            Decision density: 0.00
+            Max loop depth: 0
+            Max conditional nesting depth: 0
+            Halstead unique operators: 0
+            Halstead unique operands: 0
+            Halstead operator occurrence: 0
+            Halstead operand occurrence: 0
+            Halstead program length: 0
+            Halstead program vocabulary: 0
+            Halstead program volume: 0.00
+            Halstead program difficulty: 0.00
+            Halstead program effort: 0.00
+            Halstead bug prediction: 0.00
+            SEI maintainability index: 0.00
+
+
+        FILE C:/Users/320050767/Source/Repos/G7CaseStudy13/HelloWorld/HelloWorld/obj/Debug/TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs
+            0 lines of source.
+            0 lines of CSharp code.
+            0 lines of comment.
+            0 types.
+            0 methods.
+            Aggregate cyclomatic complexity: 0
+            Mean cyclomatic complexity: 0.00
+            Median cyclomatic complexity: 0.00
+            Conditional Statements: 0
+            Decision density: 0.00
+            Max loop depth: 0
+            Max conditional nesting depth: 0
+            Halstead unique operators: 0
+            Halstead unique operands: 0
+            Halstead operator occurrence: 0
+            Halstead operand occurrence: 0
+            Halstead program length: 0
+            Halstead program vocabulary: 0
+            Halstead program volume: 0.00
+            Halstead program difficulty: 0.00
+            Halstead program effort: 0.00
+            Halstead bug prediction: 0.00
+            SEI maintainability index: 0.00
+
+
+******************** End Metrics *************************

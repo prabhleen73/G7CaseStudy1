@@ -62,6 +62,10 @@ namespace StaticAnalyzer
             if (CheckFile(_outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml"))
             {
                 string outputFileLocation = _outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
+                Console.WriteLine("***********************************************************");
+                Console.WriteLine("*******************Ndepend Result********************");
+                Console.WriteLine("***********************************************************");
+                Console.WriteLine();
                 ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(outputFileLocation);
             }
         }

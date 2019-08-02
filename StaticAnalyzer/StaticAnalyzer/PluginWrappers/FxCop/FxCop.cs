@@ -48,7 +48,7 @@ namespace StaticAnalyzer
                                     select elem).FirstOrDefault();
             if (requiredTag != null)
             {
-                
+                requiredTag.SetValue(GetFiles(_inputDirectory));
             }
             return success;
         }

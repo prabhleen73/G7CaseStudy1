@@ -97,6 +97,10 @@ namespace StaticAnalyzer
 
         private void displayOutput()
         {
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*******************CSharpMetrics Result********************");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine();
             foreach (var key in MetricMap.Keys)
             {
                 Console.WriteLine(key);

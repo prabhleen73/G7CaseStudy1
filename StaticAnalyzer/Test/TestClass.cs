@@ -10,8 +10,14 @@ namespace Test
     {
         static void Main(string[] args)
         {
-            string DirectoryPath = "";
-            string FilePath = "";
+            //successful test case
+            //C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorld
+            //C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\Configuration.xml
+            //Failure Test Case
+            //C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorldHello
+            //C:\Users\320050767\Source\Repos\G7CaseStudy13\Configuration.xml
+            string DirectoryPath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorldHello";
+            string FilePath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\Configuration.xml";
 
             //TestCase1
             if (Program.CheckDirectory(DirectoryPath))
