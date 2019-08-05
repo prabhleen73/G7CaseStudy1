@@ -9,35 +9,35 @@ namespace StaticAnalyzer
 {
     public class CSharpMetrics : IStaticAnalysisTool
     {
-        private string _inputDirectory;
-        private string _argument;
-        private string _outputFileDirectory;
-        private string _inputProjFile;
-        private string _currentDirectory;
+        private string InputDirectory;
+        private string Argument;
+        private string OutputFileDirectory;
+        private string InputProjFile;
+        private string CurrentDirectory;
         Dictionary<string, Dictionary<string, string>> MetricMap = new Dictionary<string, Dictionary<string, string>>();
-        private readonly string _installationPath;
+        private readonly string InstallationPath;
 
         public CSharpMetrics(string installationPath)
         {
-            _installationPath = installationPath;
+            InstallationPath = installationPath;
         }
         public bool PrepareInput( string inputDirectory)
         {
             bool success = true;
-            _inputDirectory = inputDirectory;
-            _currentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
-            _outputFileDirectory = _currentDirectory + "\\StaticAnalysisReports";
-            _inputProjFile = _currentDirectory + "\\CSharpMetricInput";
-            if (!File.Exists(_inputProjFile))
+            InputDirectory = inputDirectory;
+            CurrentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
+            OutputFileDirectory = CurrentDirectory + "\\StaticAnalysisReports";
+            InputProjFile = CurrentDirectory + "\\CSharpMetricInput";
+            if (!File.Exists(InputProjFile))
             {
                 success = false;
                 return success;
             }
-            List<string> filenames = GetFiles(_inputDirectory);
-            string requiredString = "CSharp~v6 Metrics 1.0\n" +"<" + _currentDirectory + "\n"+ _outputFileDirectory + "\\CSharpMetricReport";
+            List<string> filenames = GetFiles(InputDirectory);
+            string requiredString = "CSharp~v6 Metrics 1.0\n" +"<" + CurrentDirectory + "\n"+ OutputFileDirectory + "\\CSharpMetricReport";
             try
             {
-                using (StreamWriter streamwriter = new StreamWriter(_inputProjFile))
+                using (StreamWriter streamwriter = new StreamWriter(InputProjFile))
                 {
                     streamwriter.WriteLine(requiredString);
                     foreach (var str in filenames)
@@ -64,12 +64,12 @@ namespace StaticAnalyzer
         }
         public void ProcessOutput()
         {
-            _argument = PrepareArgument(_inputDirectory, _inputProjFile);
-            ExecuteStaticAnalysisTool(_installationPath, _argument);
+            Argument = PrepareArgument(InputDirectory, InputProjFile);
+            ExecuteStaticAnalysisTool(InstallationPath, Argument);
 
-            if (CheckFile(_outputFileDirectory + "\\CSharpMetricReport.xml"))
+            if (CheckFile(OutputFileDirectory + "\\CSharpMetricReport.xml"))
             {
-                XElement root = XElement.Load(_outputFileDirectory + "\\CSharpMetricReport.xml");
+                XElement root = XElement.Load(OutputFileDirectory + "\\CSharpMetricReport.xml");
                 //Processing of XML to get required data
                 var fileElement = from elem in root.DescendantsAndSelf()
                                   where elem.Name == "FileMetrics"

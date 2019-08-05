@@ -9,10 +9,10 @@ namespace StaticAnalyzer
 {
     class ToolsConfiguration
     {
-        private readonly List<ToolMeta> _tools = new List<ToolMeta>();
+        private readonly List<ToolMeta> tools = new List<ToolMeta>();
         private XElement xElement;
 
-        public IReadOnlyCollection<ToolMeta> Tools => _tools;
+        public IReadOnlyCollection<ToolMeta> Tools => tools;
         public ToolsConfiguration(XElement installedPlugins)
         {
             //GOTo this plugin Node
@@ -24,7 +24,7 @@ namespace StaticAnalyzer
                     new ToolMeta.WrapperMeta(
                         element.Attribute("wrapperClassName").Value);
 
-                _tools.Add(new ToolMeta
+                tools.Add(new ToolMeta
                   (
                     element.Attribute("name").Value,
                     element.Attribute("installationPath").Value,

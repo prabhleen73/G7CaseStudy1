@@ -9,10 +9,10 @@ namespace StaticAnalyzer
 {
     class StaticAnalysisApplication
     {
-        private IEnumerable<IStaticAnalysisTool> _staticAnalysisPlugins;
+        private IEnumerable<IStaticAnalysisTool> StaticAnalysisPlugins;
         public StaticAnalysisApplication(IEnumerable<ToolMeta> staticAnalysisPluginMeta)
         {
-            _staticAnalysisPlugins = IntializeToolsList(staticAnalysisPluginMeta);
+            StaticAnalysisPlugins = IntializeToolsList(staticAnalysisPluginMeta);
         }
 
         private IEnumerable<IStaticAnalysisTool> IntializeToolsList(IEnumerable<ToolMeta> configuredTools)
@@ -54,7 +54,7 @@ namespace StaticAnalyzer
             int exitCode = 0;
             try
             {
-                foreach (var tool in _staticAnalysisPlugins)
+                foreach (var tool in StaticAnalysisPlugins)
                 {
                     tool.PrepareInput(inputPath);
                     tool.ProcessOutput();

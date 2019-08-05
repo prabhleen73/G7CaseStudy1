@@ -11,27 +11,27 @@ namespace StaticAnalyzer
 {
     public class Ndepend : IStaticAnalysisTool
     {
-        private string _installationPath;
-        private string _inputDirectory;
-        private string _argument;
-        private string _outputDirectory;
-        private string _inputProjFile;
-        private string _currentDirectory;
+        private string InstallationPath;
+        private string InputDirectory;
+        private string Argument;
+        private string OutputDirectory;
+        private string InputProjFile;
+        private string CurrentDirectory;
         public Ndepend(string InstallationPath)
         {
-            _installationPath = InstallationPath;
+            this.InstallationPath = InstallationPath;
         }
         public bool PrepareInput(string inputDirectory)
         {
             bool success = true;
-            _currentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
-            _inputDirectory = inputDirectory;
-            _outputDirectory = _currentDirectory + "\\StaticAnalysisReports";
-            _inputProjFile = _currentDirectory + "\\NDependInput.ndproj";
+            CurrentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
+            InputDirectory = inputDirectory;
+            OutputDirectory = CurrentDirectory + "\\StaticAnalysisReports";
+            InputProjFile = CurrentDirectory + "\\NDependInput.ndproj";
            
 
 
-            XElement root = XElement.Load(_inputProjFile);
+            XElement root = XElement.Load(InputProjFile);
             XElement requiredVal = (from elem in root.DescendantsAndSelf()
                                     where elem.Name == "IDEFile"
                                     select elem).FirstOrDefault();
@@ -40,9 +40,9 @@ namespace StaticAnalyzer
                 success = false;
                 return success;
             }
-            string slnFilename = GetFiles(_inputDirectory);
+            string slnFilename = GetFiles(InputDirectory);
             requiredVal.Attribute("FilePath").SetValue(slnFilename);
-            root.Save(_inputProjFile);
+            root.Save(InputProjFile);
             return success;
         }
         static public bool CheckFile(string Filename)
@@ -57,11 +57,11 @@ namespace StaticAnalyzer
         public void ProcessOutput()
         {
            
-            string argument = PrepareArgument(_inputProjFile, _outputDirectory);
-            ExecuteStaticAnalysisTool(_installationPath, argument);
-            if (CheckFile(_outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml"))
+            string argument = PrepareArgument(InputProjFile, OutputDirectory);
+            ExecuteStaticAnalysisTool(InstallationPath, argument);
+            if (CheckFile(OutputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml"))
             {
-                string outputFileLocation = _outputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
+                string outputFileLocation = OutputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
                 Console.WriteLine("***********************************************************");
                 Console.WriteLine("*******************Ndepend Result********************");
                 Console.WriteLine("***********************************************************");
