@@ -11,15 +11,15 @@ namespace StaticAnalyzer
 {
     public class FxCop : IStaticAnalysisTool
     {
-        private string _inputDirectory;
-        private string _argument;
-        private string _outputFileDirectory;
-        private string _inputProjFile;
-        private string _currentDirectory;
-        private string _installationPath;
+        private string InputDirectory;
+        private string Argument;
+        private string OutputFileDirectory;
+        private string InputProjFile;
+        private string CurrentDirectory;
+        private string InstallationPath;
         public FxCop(string InstallationPath)
         {
-            _installationPath = InstallationPath;
+            this.InstallationPath = InstallationPath;
         }
         static public bool CheckFile(string Filename)
         {
@@ -33,33 +33,33 @@ namespace StaticAnalyzer
         public bool PrepareInput(string inputDirectory)
         {
             bool success = true;
-            _inputDirectory = inputDirectory;
-            _currentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
-            _outputFileDirectory = _currentDirectory + "\\StaticAnalysisReports";
-            _inputProjFile = _currentDirectory + "\\FxCopInput.FxCop";
-            if (!CheckFile(_inputProjFile))
+            InputDirectory = inputDirectory;
+            CurrentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
+            OutputFileDirectory = CurrentDirectory + "\\StaticAnalysisReports";
+            InputProjFile = CurrentDirectory + "\\FxCopInput.FxCop";
+            if (!CheckFile(InputProjFile))
             {
                 success = false;
                 return success;
             }
-            XElement root = XElement.Load(_inputProjFile);
+            XElement root = XElement.Load(InputProjFile);
             XElement requiredTag = (from elem in root.DescendantsAndSelf()
                                     where elem.Name == "Target"
                                     select elem).FirstOrDefault();
             if (requiredTag != null)
             {
-                requiredTag.SetValue(GetFiles(_inputDirectory));
+                requiredTag.SetValue(GetFiles(InputDirectory));
             }
             return success;
         }
 
         public void ProcessOutput()
         {
-            string argument = PrepareArgument(_inputProjFile, _outputFileDirectory);
-            ExecuteStaticAnalysisTool(_installationPath, argument);
-            if (CheckFile(_outputFileDirectory + "\\FxCopResults.xml"))
+            string argument = PrepareArgument(InputProjFile, OutputFileDirectory);
+            ExecuteStaticAnalysisTool(InstallationPath, argument);
+            if (CheckFile(OutputFileDirectory + "\\FxCopResults.xml"))
             {
-                Parser obj = new Parser(_outputFileDirectory + "\\FxCopResults.xml");
+                Parser obj = new Parser(OutputFileDirectory + "\\FxCopResults.xml");
             }
         }
 
