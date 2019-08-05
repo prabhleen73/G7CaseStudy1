@@ -16,8 +16,14 @@ namespace Test
             //Failure Test Case
             //C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorldHello
             //C:\Users\320050767\Source\Repos\G7CaseStudy13\Configuration.xml
+
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*******************Test Results********************");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine();
+
             string DirectoryPath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\HelloWorldHello";
-            string FilePath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\Configuration.xml";
+            string FilePath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\Configuration.xml";
 
             //TestCase1
             if (Program.CheckDirectory(DirectoryPath))

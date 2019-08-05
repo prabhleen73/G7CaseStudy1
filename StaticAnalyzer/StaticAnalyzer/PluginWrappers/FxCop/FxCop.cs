@@ -78,7 +78,7 @@ namespace StaticAnalyzer
         }
         private static string PrepareArgument(string InputFile, string OutputDirectory)
         {
-            string argument = "/p:"+InputFile+ "/out:"+ OutputDirectory+"\\FxCopResults.xml";
+            string argument = "/p:"+InputFile+ " /out:"+ OutputDirectory+"\\FxCopResults.xml";
             return argument;
         }
     }
