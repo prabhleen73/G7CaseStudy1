@@ -84,7 +84,7 @@ namespace StaticAnalyzer
                         {
                             string key = child.Name.ToString();
                             string value = child.Value;
-                            MetricOfEachFile.Add(key, value);
+                            MetricOfEachFile[key]= value;
                         }
                         string filename = filenameElement.Value.ToString();
                         MetricMap.Add(filename, MetricOfEachFile);
@@ -103,6 +103,7 @@ namespace StaticAnalyzer
             Console.WriteLine();
             foreach (var key in MetricMap.Keys)
             {
+                Console.WriteLine("***********************************************************");
                 Console.WriteLine(key);
                 foreach (KeyValuePair<string, string> MetricMapValue in MetricMap[key])
                 {

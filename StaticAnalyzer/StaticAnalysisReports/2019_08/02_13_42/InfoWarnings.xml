@@ -16,6 +16,6 @@
   <Info>No SuppressMessageAttribute found in the analyzed code base. Since NDepend v2018.2 SuppressMessageAttribute can be used to suppress NDepend issues. Don't forget to set in your projects the compilation symbol CODE_ANALYSIS to use this attribute to suppress NDepend issues.</Info>
   <Info>Log trend metrics values.</Info>
   <Info>Execute queries and rules.</Info>
-  <Info>NDepend analysis done. Duration: 00:21</Info>
+  <Info>NDepend analysis done. Duration: 00:18</Info>
   <Info>Building the report (standard).</Info>
 </InfoWarnings>

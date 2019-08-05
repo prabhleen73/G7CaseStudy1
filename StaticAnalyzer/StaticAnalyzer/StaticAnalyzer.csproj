@@ -60,7 +60,6 @@
     <Compile Include="IStaticAnalysisTool.cs" />
     <Compile Include="Configuration\ToolMeta.cs" />
     <Compile Include="StaticAnalysis.cs" />
-    <Compile Include="TestClass.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
