@@ -11,12 +11,12 @@ namespace StaticAnalyzer
 {
     public class Ndepend : IStaticAnalysisTool
     {
-        private string InstallationPath;
-        private string InputDirectory;
-        private string Argument;
-        private string OutputDirectory;
-        private string InputProjFile;
-        private string CurrentDirectory;
+        private string InstallationPath { get; set; }
+        private string InputDirectory { get; set; }
+        private string Argument { get; set; }
+        private string OutputDirectory { get; set; }
+        private string InputProjFile { get; set; }
+        private string CurrentDirectory { get; set; }
         public Ndepend(string InstallationPath)
         {
             this.InstallationPath = InstallationPath;
@@ -45,44 +45,21 @@ namespace StaticAnalyzer
             root.Save(InputProjFile);
             return success;
         }
-        static public bool CheckFile(string Filename)
-        {
-            bool success = false;
-            if (File.Exists(Filename))
-            {
-                success = true;
-            }
-            return success;
-        }
         public void ProcessOutput()
         {
-           
-            string argument = PrepareArgument(InputProjFile, OutputDirectory);
-            ExecuteStaticAnalysisTool(InstallationPath, argument);
-            if (CheckFile(OutputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml"))
-            {
-                string outputFileLocation = OutputDirectory + "\\TrendMetrics\\NDependTrendData2019.xml";
-                Console.WriteLine("***********************************************************");
-                Console.WriteLine("*******************Ndepend Result********************");
-                Console.WriteLine("***********************************************************");
-                Console.WriteLine();
-                ParsingXmlNDepend.ShowingResultsAfterParsingNDependXml(outputFileLocation);
-            }
+            Argument = PrepareArgument(InputProjFile, OutputDirectory);
+            Helper.ExecuteStaticAnalysisTool(InstallationPath, Argument);
+            string filepath = Path.Combine(OutputDirectory ,"TrendMetrics\\NDependTrendData2019.xml");
+            ParsingXmlNDepend parsingXmlNDepend = new ParsingXmlNDepend();
+            parsingXmlNDepend.ShowingResultsAfterParsingNDependXml(filepath);
         }
-        private static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
-        {
-            using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
-            {
-                ExeToExecute.WaitForExit();
-            }
-        }
-        private static string GetFiles(string _inputDirectory)
+        private string GetFiles(string _inputDirectory)
         {
             string filename;
             filename = Directory.GetFiles(_inputDirectory, "*.sln", SearchOption.AllDirectories).First();
             return filename;
         }
-        private static string PrepareArgument(string InputProjFile, string OutputDirectory)
+        private string PrepareArgument(string InputProjFile, string OutputDirectory)
         {
             string argument = InputProjFile + " /LogTrendMetrics /OutDir " + OutputDirectory;
             return argument;

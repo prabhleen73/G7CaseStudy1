@@ -26,6 +26,6 @@ You can ask for evaluation extension if required from the menu Help then License
   <Info>Execute queries and rules.</Info>
   <Error>1 quality gate fails:
   - 'Critical Rules Violated' value 1 rules greater than fail threshold 0 rules</Error>
-  <Info>NDepend analysis done. Duration: 00:16</Info>
+  <Info>NDepend analysis done. Duration: 00:15</Info>
   <Info>Building the report (standard).</Info>
 </InfoWarnings>

@@ -50,7 +50,9 @@
   <ItemGroup>
     <Compile Include="Configuration\Configuration.cs" />
     <Compile Include="Configuration\ToolsConfiguration.cs" />
+    <Compile Include="Helper.cs" />
     <Compile Include="PluginWrappers\CSharpMetric\CSharpMetrics.cs" />
+    <Compile Include="PluginWrappers\CSharpMetric\ParserCSharpMetric.cs" />
     <Compile Include="PluginWrappers\FxCop\FxCop.cs" />
     <Compile Include="PluginWrappers\NDeped\Ndepend.cs" />
     <Compile Include="PluginWrappers\FxCop\ParsingFxCop.cs" />

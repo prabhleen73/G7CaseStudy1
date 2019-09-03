@@ -11,24 +11,15 @@ namespace StaticAnalyzer
 {
     public class FxCop : IStaticAnalysisTool
     {
-        private string InputDirectory;
-        private string Argument;
-        private string OutputFileDirectory;
-        private string InputProjFile;
-        private string CurrentDirectory;
-        private string InstallationPath;
+        private string InputDirectory { get; set; }
+        private string Argument { get; set; }
+        private string OutputFileDirectory { get; set; }
+        private string InputProjFile { get; set; }
+        private string CurrentDirectory { get; set; }
+        private string InstallationPath { get; set; }
         public FxCop(string InstallationPath)
         {
             this.InstallationPath = InstallationPath;
-        }
-        static public bool CheckFile(string Filename)
-        {
-            bool success = false;
-            if (File.Exists(Filename))
-            {
-                success = true;
-            }
-            return success;
         }
         public bool PrepareInput(string inputDirectory)
         {
@@ -37,7 +28,7 @@ namespace StaticAnalyzer
             CurrentDirectory = Path.GetDirectoryName(Path.GetDirectoryName(Path.GetDirectoryName(Directory.GetCurrentDirectory())));
             OutputFileDirectory = CurrentDirectory + "\\StaticAnalysisReports";
             InputProjFile = CurrentDirectory + "\\FxCopInput.FxCop";
-            if (!CheckFile(InputProjFile))
+            if (!Helper.CheckFileExists(InputProjFile))
             {
                 success = false;
                 return success;
@@ -56,18 +47,10 @@ namespace StaticAnalyzer
         public void ProcessOutput()
         {
             string argument = PrepareArgument(InputProjFile, OutputFileDirectory);
-            ExecuteStaticAnalysisTool(InstallationPath, argument);
-            if (CheckFile(OutputFileDirectory + "\\FxCopResults.xml"))
+            Helper.ExecuteStaticAnalysisTool(InstallationPath, argument);
+            if (Helper.CheckFileExists(OutputFileDirectory + "\\FxCopResults.xml"))
             {
                 Parser obj = new Parser(OutputFileDirectory + "\\FxCopResults.xml");
-            }
-        }
-
-        private static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
-        {
-            using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
-            {
-                ExeToExecute.WaitForExit();
             }
         }
         private static string GetFiles(string _inputDirectory)

@@ -11,7 +11,7 @@ namespace StaticAnalyzer
 {
     internal class ParsingXmlNDepend
     {
-        public static void ShowingResultsAfterParsingNDependXml(string argument)
+        public void ShowingResultsAfterParsingNDependXml(string argument)
         {
             //string ques = Console.ReadLine();
 
@@ -58,7 +58,10 @@ namespace StaticAnalyzer
             {
                 NDependMetrics.Add(attributeName[k], attributeValue[k]);
             }
-
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine("*******************Ndepend Result********************");
+            Console.WriteLine("***********************************************************");
+            Console.WriteLine();
             foreach (var item in NDependMetrics)
             {
                 Console.WriteLine(item);
