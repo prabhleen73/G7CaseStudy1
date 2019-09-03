@@ -4,18 +4,18 @@ using System.Xml.Linq;
 using System.Linq;
 using System.Collections.Generic;
 using System.Diagnostics;
+using StaticAnalyzer.PluginWrappers.CSharpMetric;
 
 namespace StaticAnalyzer
 {
     public class CSharpMetrics : IStaticAnalysisTool
     {
-        private string InputDirectory;
-        private string Argument;
-        private string OutputFileDirectory;
-        private string InputProjFile;
-        private string CurrentDirectory;
-        Dictionary<string, Dictionary<string, string>> MetricMap = new Dictionary<string, Dictionary<string, string>>();
-        private readonly string InstallationPath;
+        private string InputDirectory { get; set; }
+        private string Argument { get; set; }
+        private string OutputFileDirectory { get; set; }
+        private string InputProjFile { get; set; }
+        private string CurrentDirectory { get; set; }
+        private string InstallationPath { get; set; }
 
         public CSharpMetrics(string installationPath)
         {
@@ -53,75 +53,16 @@ namespace StaticAnalyzer
 
             return success;
         }
-        static public bool CheckFile(string Filename)
-        {
-            bool success = false;
-            if (File.Exists(Filename))
-            {
-                success = true;
-            }
-            return success;
-        }
         public void ProcessOutput()
         {
             Argument = PrepareArgument(InputDirectory, InputProjFile);
-            ExecuteStaticAnalysisTool(InstallationPath, Argument);
-
-            if (CheckFile(OutputFileDirectory + "\\CSharpMetricReport.xml"))
-            {
-                XElement root = XElement.Load(OutputFileDirectory + "\\CSharpMetricReport.xml");
-                //Processing of XML to get required data
-                var fileElement = from elem in root.DescendantsAndSelf()
-                                  where elem.Name == "FileMetrics"
-                                  select elem;
-                foreach (var elem in fileElement)
-                {
-                    XElement filenameElement = elem.Descendants("FileName").FirstOrDefault();
-                    if (filenameElement != null)
-                    {
-                        Dictionary<string, string> MetricOfEachFile = new Dictionary<string, string>();
-                        foreach (var child in elem.Descendants("FileSummary").Elements())
-                        {
-                            string key = child.Name.ToString();
-                            string value = child.Value;
-                            MetricOfEachFile[key]= value;
-                        }
-                        string filename = filenameElement.Value.ToString();
-                        MetricMap.Add(filename, MetricOfEachFile);
-
-                    }
-                }
-                displayOutput();
-            }
+            Helper.ExecuteStaticAnalysisTool(InstallationPath, Argument);
+            ParserCSharpMetric parserCSharpMetric = new ParserCSharpMetric();
+            string filepath = Path.Combine(OutputFileDirectory, "CSharpMetricReport.xml");
+            parserCSharpMetric.parseXML(filepath);
         }
 
-        private void displayOutput()
-        {
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine("*******************CSharpMetrics Result********************");
-            Console.WriteLine("***********************************************************");
-            Console.WriteLine();
-            foreach (var key in MetricMap.Keys)
-            {
-                Console.WriteLine("***********************************************************");
-                Console.WriteLine(key);
-                foreach (KeyValuePair<string, string> MetricMapValue in MetricMap[key])
-                {
-                    Console.WriteLine(MetricMapValue.Key + "\t" + MetricMapValue.Value);
-                }
-
-            }
-        }
-
-
-        private static void ExecuteStaticAnalysisTool(string exeFileAndLocation, string arguments)
-        {
-            using (Process ExeToExecute = Process.Start(exeFileAndLocation, arguments))
-            {
-                ExeToExecute.WaitForExit();
-            }
-        }
-
+        
         private static List<string> GetFiles(string _inputDirectory)
         {
             List<string> filenames = new List<string>();
