@@ -1,11 +1,14 @@
-﻿using System;
+﻿using ConfigurationLib;
+using StaticAnalysisContractsLib;
+using StaticAnalyzer;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace StaticAnalyzer
+namespace ConfigurationLib
 {
     class StaticAnalysisApplication
     {
@@ -21,7 +24,9 @@ namespace StaticAnalyzer
 
             foreach (var toolMeta in configuredTools)
             {
-                var type = Type.GetType(/*"StaticAnalyzer."*/GetType().Namespace+"."+toolMeta.Wrapper.ClassName);
+                var assembly = Assembly.LoadFile(toolMeta.Wrapper.Assembly);
+                var toolClassType = toolMeta.Wrapper.Namespace + "." + toolMeta.Wrapper.ClassName;
+                var type = assembly.GetType(toolClassType);
                 if (!(type == null))
                 {
                     object tool;
