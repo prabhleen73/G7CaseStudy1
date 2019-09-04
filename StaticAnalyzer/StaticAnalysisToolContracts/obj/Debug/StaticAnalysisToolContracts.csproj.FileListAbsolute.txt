@@ -1,5 +1,0 @@
-C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisToolContracts\bin\Debug\StaticAnalysisToolContracts.dll
-C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisToolContracts\bin\Debug\StaticAnalysisToolContracts.pdb
-C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisToolContracts\obj\Debug\StaticAnalysisToolContracts.dll
-C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisToolContracts\obj\Debug\StaticAnalysisToolContracts.pdb
-C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\StaticAnalysisToolContracts\obj\Debug\StaticAnalysisToolContracts.csprojResolveAssemblyReference.cache
