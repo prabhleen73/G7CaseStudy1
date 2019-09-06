@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ConfigurationLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,5 +9,6 @@ namespace StaticAnalysisToolContracts
 {
     public interface IConfiguration
     {
+        IReadOnlyCollection<ToolMeta> LoadConfiguration();
     }
 }

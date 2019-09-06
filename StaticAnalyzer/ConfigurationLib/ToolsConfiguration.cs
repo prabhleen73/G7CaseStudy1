@@ -1,22 +1,19 @@
-﻿using System;
+﻿using StaticAnalysisToolContracts;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Xml.Linq;
 
 namespace ConfigurationLib
 {
-    public class ToolsConfiguration
+    public class ToolsConfiguration : IConfiguration
     {
-        private readonly List<ToolMeta> tools = new List<ToolMeta>();
+        private List<ToolMeta> tools = new List<ToolMeta>();
         private string configurationFilepath;
-        public IReadOnlyCollection<ToolMeta> Tools => tools;
         public ToolsConfiguration(string configurationFilepath)
         {
             this.configurationFilepath = configurationFilepath;
         }
-        public void LoadConfiguration()
+        public IReadOnlyCollection<ToolMeta> LoadConfiguration()
         {
             XElement configurationRoot = XElement.Load(configurationFilepath);
             if (configurationRoot != null)
@@ -37,7 +34,9 @@ namespace ConfigurationLib
                         wrapperMeta
                       ));
                 }
+                
             }
+            return tools;
         }
 
     }

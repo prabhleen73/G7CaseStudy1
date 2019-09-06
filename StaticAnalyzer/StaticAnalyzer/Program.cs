@@ -1,4 +1,5 @@
 ﻿using ConfigurationLib;
+using StaticAnalysisToolContracts;
 using System;
 using System.Collections.Generic;
 using System.Xml.Linq;
@@ -25,10 +26,10 @@ namespace StaticAnalyzer
                 {
                     Console.WriteLine("Welcome to Static Analysis Tool");
 
-                    var toolsConfiguration = new ToolsConfiguration(configurationFilePath);
-                    toolsConfiguration.LoadConfiguration();
+                    IConfiguration toolsConfiguration = new ToolsConfiguration(configurationFilePath);
+                    var toolsConfigurationList = toolsConfiguration.LoadConfiguration();
 
-                    StaticAnalysisApplication staticAnalysis = new StaticAnalysisApplication(toolsConfiguration.Tools);
+                    StaticAnalysisApplication staticAnalysis = new StaticAnalysisApplication(toolsConfigurationList);
 
                     int errorcode = staticAnalysis.Run(inputPath);
                     if (errorcode == -2)

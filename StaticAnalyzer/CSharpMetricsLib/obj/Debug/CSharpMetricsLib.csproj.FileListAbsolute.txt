@@ -7,3 +7,5 @@ C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\bi
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\bin\Debug\UtilityLib.pdb
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\obj\Debug\CSharpMetricsLib.dll
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\obj\Debug\CSharpMetricsLib.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\bin\Debug\ToolsMetaLib.dll
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\CSharpMetricsLib\bin\Debug\ToolsMetaLib.pdb

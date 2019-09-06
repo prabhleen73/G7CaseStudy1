@@ -7,3 +7,5 @@ C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\bin\Debu
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\bin\Debug\UtilityLib.pdb
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\obj\Debug\NDependLib.dll
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\obj\Debug\NDependLib.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\bin\Debug\ToolsMetaLib.dll
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\NDependLib\bin\Debug\ToolsMetaLib.pdb
