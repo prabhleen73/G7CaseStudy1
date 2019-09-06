@@ -10,9 +10,10 @@ using System.Threading.Tasks;
 
 namespace ConfigurationLib
 {
-    class StaticAnalysisApplication
+    public class StaticAnalysisApplication
     {
         private IEnumerable<IStaticAnalysisTool> StaticAnalysisPlugins;
+        public IEnumerable<IStaticAnalysisTool> ToolObjectList => StaticAnalysisPlugins;
         public StaticAnalysisApplication(IEnumerable<ToolMeta> staticAnalysisPluginMeta)
         {
             StaticAnalysisPlugins = IntializeToolsList(staticAnalysisPluginMeta);
