@@ -10,26 +10,33 @@ namespace ConfigurationLib
     public class ToolsConfiguration
     {
         private readonly List<ToolMeta> tools = new List<ToolMeta>();
-        private XElement xElement;
-
+        private string configurationFilepath;
         public IReadOnlyCollection<ToolMeta> Tools => tools;
-        public ToolsConfiguration(XElement installedPlugins)
+        public ToolsConfiguration(string configurationFilepath)
         {
-            //GOTo this plugin Node
-            //Load Tool meta
-            //Foreach Node in In
-            foreach (var element in installedPlugins.Elements())
+            this.configurationFilepath = configurationFilepath;
+        }
+        public void LoadConfiguration()
+        {
+            XElement configurationRoot = XElement.Load(configurationFilepath);
+            if (configurationRoot != null)
             {
-                ToolMeta.WrapperMeta wrapperMeta =
-                    new ToolMeta.WrapperMeta(
-                        element.Attribute("wrapperClassName").Value,element.Attribute("namespace").Value,element.Attribute("assembly").Value);
+                var installedPlugins = from element in configurationRoot.DescendantsAndSelf()
+                                       where element.Name == "installedPlugins"
+                                       select element;
+                foreach (var element in installedPlugins.Elements())
+                {
+                    ToolMeta.WrapperMeta wrapperMeta =
+                        new ToolMeta.WrapperMeta(
+                            element.Attribute("wrapperClassName").Value, element.Attribute("namespace").Value, element.Attribute("assembly").Value);
 
-                tools.Add(new ToolMeta
-                  (
-                    element.Attribute("name").Value,
-                    element.Attribute("installationPath").Value,
-                    wrapperMeta
-                  ));
+                    tools.Add(new ToolMeta
+                      (
+                        element.Attribute("name").Value,
+                        element.Attribute("installationPath").Value,
+                        wrapperMeta
+                      ));
+                }
             }
         }
 

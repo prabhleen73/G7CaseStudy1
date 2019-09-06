@@ -24,8 +24,9 @@ namespace StaticAnalyzer
                 if (Helper.CheckFileExists(configurationFilePath))
                 {
                     Console.WriteLine("Welcome to Static Analysis Tool");
-                    var configuration = LoadConfiguration(configurationFilePath);
-                    var toolsConfiguration = new ToolsConfiguration(configuration["installedPlugins"]);
+
+                    var toolsConfiguration = new ToolsConfiguration(configurationFilePath);
+                    toolsConfiguration.LoadConfiguration();
 
                     StaticAnalysisApplication staticAnalysis = new StaticAnalysisApplication(toolsConfiguration.Tools);
 
@@ -37,13 +38,6 @@ namespace StaticAnalyzer
                 }
             }
             return 0;
-        }
-
-        private static IReadOnlyDictionary<string, XElement> LoadConfiguration(string ConfigurationFilePath)
-        {
-            Configuration config = new Configuration(ConfigurationFilePath);
-            config.LoadConfiguration();
-            return config.Configurations;
         }
     }
 }

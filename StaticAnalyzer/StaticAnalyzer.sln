@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UtilityLib", "UtilityLib\Ut
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CSharpMetricsLib", "CSharpMetricsLib\CSharpMetricsLib.csproj", "{F8C506AB-62AD-44D4-A2ED-5BE78B09E835}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTest", "UnitTest\UnitTest.csproj", "{0D73280D-ED52-4EA7-9D3B-8EC312956BD4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{F8C506AB-62AD-44D4-A2ED-5BE78B09E835}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F8C506AB-62AD-44D4-A2ED-5BE78B09E835}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F8C506AB-62AD-44D4-A2ED-5BE78B09E835}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0D73280D-ED52-4EA7-9D3B-8EC312956BD4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0D73280D-ED52-4EA7-9D3B-8EC312956BD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0D73280D-ED52-4EA7-9D3B-8EC312956BD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0D73280D-ED52-4EA7-9D3B-8EC312956BD4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
