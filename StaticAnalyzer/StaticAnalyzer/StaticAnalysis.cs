@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using ToolsMetaLib;
 
 namespace ConfigurationLib
 {
@@ -62,8 +63,9 @@ namespace ConfigurationLib
                     tool.ProcessOutput();
                 }
             }
-            catch
+            catch(Exception exception)
             {
+                var ex = exception.GetType();
                 exitCode = -2;
             }
             return exitCode;

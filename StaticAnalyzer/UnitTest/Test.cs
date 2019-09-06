@@ -1,8 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ConfigurationLib;
 using System.Linq;
-using StaticAnalysisContractsLib;
 using StaticAnalysisToolContracts;
+using System.ComponentModel;
 
 namespace UnitTest
 {
@@ -28,13 +28,19 @@ namespace UnitTest
             var staticAnalyzer = new StaticAnalysisApplication(toolList);
             var staticAnalyzerList = staticAnalyzer.ToolObjectList;
             var expectedValue = staticAnalyzerList.Count();
-            var actualValue = 2;
+            var actualValue = 1;
             Assert.AreEqual(expectedValue, actualValue);
         }
         [TestMethod]
-        public void given_something_when_somethingHappens_then_expectedSomething()
+        [ExpectedException(typeof(Win32Exception))]
+        public void given_toolObjectList_when_toolInvoked_then_noExceptionExpected()
         {
-
+            var configurationFilepath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\ConfigurationLib\Configuration.xml";
+            var inputPath = @"C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer";
+            IConfiguration toolsConfiguration = new ToolsConfiguration(configurationFilepath);
+            var toolList = toolsConfiguration.LoadConfiguration();
+            var staticAnalyzer = new StaticAnalysisApplication(toolList);
+            staticAnalyzer.Run(inputPath);
         }
     }
 }
