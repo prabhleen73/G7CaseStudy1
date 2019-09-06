@@ -66,6 +66,10 @@
       <Project>{8fdf9386-b961-4432-8049-a7e7feac237e}</Project>
       <Name>StaticAnalyzer</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ToolsMetaLib\ToolsMetaLib.csproj">
+      <Project>{68901b47-02f9-4e45-8a14-ea6aecf1efa2}</Project>
+      <Name>ToolsMetaLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

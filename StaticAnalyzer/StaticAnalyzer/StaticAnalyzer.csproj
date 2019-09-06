@@ -65,6 +65,10 @@
       <Project>{33BCDE19-AC2E-46A0-AAAC-BEAF52312D7D}</Project>
       <Name>StaticAnalysisContractsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\ToolsMetaLib\ToolsMetaLib.csproj">
+      <Project>{68901b47-02f9-4e45-8a14-ea6aecf1efa2}</Project>
+      <Name>ToolsMetaLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\UtilityLib\UtilityLib.csproj">
       <Project>{6E69C0F8-9592-4856-AC21-4D12970C01D7}</Project>
       <Name>UtilityLib</Name>

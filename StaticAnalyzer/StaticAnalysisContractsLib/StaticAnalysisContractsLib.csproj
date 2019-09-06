@@ -44,6 +44,12 @@
     <Compile Include="IStaticAnalysisTool.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\ToolsMetaLib\ToolsMetaLib.csproj">
+      <Project>{68901b47-02f9-4e45-8a14-ea6aecf1efa2}</Project>
+      <Name>ToolsMetaLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

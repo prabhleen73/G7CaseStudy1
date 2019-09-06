@@ -41,11 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ToolMeta.cs" />
     <Compile Include="ToolsConfiguration.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Configuration.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\StaticAnalysisContractsLib\StaticAnalysisContractsLib.csproj">
+      <Project>{33bcde19-ac2e-46a0-aaac-beaf52312d7d}</Project>
+      <Name>StaticAnalysisContractsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ToolsMetaLib\ToolsMetaLib.csproj">
+      <Project>{68901b47-02f9-4e45-8a14-ea6aecf1efa2}</Project>
+      <Name>ToolsMetaLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

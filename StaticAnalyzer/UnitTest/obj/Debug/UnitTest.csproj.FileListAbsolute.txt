@@ -12,3 +12,5 @@ C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\StaticAnalysisContractsLib.pdb
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\StaticAnalyzer.pdb
 C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\UtilityLib.pdb
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\ToolsMetaLib.dll
+C:\Users\320050767\Source\Repos\G7CaseStudy13\StaticAnalyzer\UnitTest\bin\Debug\ToolsMetaLib.pdb
